@@ -23,11 +23,11 @@ Things you may want to cover:
 
 * ...
 
-## massageテーブル
+## messagesテーブル
 |Column|Type|Option|
 |------|----|------|
 |body|text||
-|image|text||
+|string|text||
 |user_id|integer|foreign_key: true, null: false|
 |group_id|integer|foreign_key: true, null: false|
 
@@ -42,22 +42,22 @@ Things you may want to cover:
 |email|string|null: false, unique :true|
 
 ### Association
-- has_many :groups, through: :intermediate
-- has_many :massages
+- has_many :groups, through: :user_groups
+- has_many :messages
 
 
-## user_groupsテーブル
+## groupsテーブル
 |Column|Type|Option|
 |------|----|------|
-|massage_id|integer|foreign_key: true, null: false|
+|message_id|integer|foreign_key: true, null: false|
 |user_id|integer|foreign_key: true, null: false|
 |name|string|null: false|
 
 ### Association
-- has_many :users, through: :intermediate
-- has_many :massages
+- has_many :users, through: :user_groups
+- has_many :messages
 
-## intermediateテーブル
+## user_groupsテーブル
 |Column|Type|Option|
 |------|----|------|
 |user_id|integer|foreign_key: true, null: false|
