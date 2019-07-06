@@ -44,6 +44,7 @@ Things you may want to cover:
 ### Association
 - has_many :groups, through: :user_groups
 - has_many :messages
+- has_many :user_gruops
 
 
 ## groupsテーブル
@@ -55,6 +56,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :users, through: :user_groups
+- has_many :user_groups
 - has_many :messages
 
 ## user_groupsテーブル
@@ -64,5 +66,5 @@ Things you may want to cover:
 |group_id|integer|foreign_key: true, null: false|
 
 ###Association
-- has_many :users
-- has_many :users_group
+- belongs_to :user
+- belongs_to :group
