@@ -26,8 +26,8 @@ Things you may want to cover:
 ## messagesテーブル
 |Column|Type|Option|
 |------|----|------|
-|body|text||
-|string|text||
+|text|text||
+|image|text||
 |user_id|integer|foreign_key: true, null: false|
 |group_id|integer|foreign_key: true, null: false|
 
@@ -50,8 +50,6 @@ Things you may want to cover:
 ## groupsテーブル
 |Column|Type|Option|
 |------|----|------|
-|message_id|integer|foreign_key: true, null: false|
-|user_id|integer|foreign_key: true, null: false|
 |name|string|null: false|
 
 ### Association
