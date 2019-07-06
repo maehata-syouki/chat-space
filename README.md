@@ -26,7 +26,7 @@ Things you may want to cover:
 ## massageテーブル
 |Column|Type|Option|
 |------|----|------|
-|body|text|null: false|
+|body|text||
 |image|text||
 |user_id|integer|foreign_key: true, null: false|
 |group_id|integer|foreign_key: true, null: false|
@@ -43,10 +43,10 @@ Things you may want to cover:
 
 ### Association
 - has_many :groups, through: :intermediate
-- has_many :massage
+- has_many :massages
 
 
-## groupsテーブル
+## user_groupsテーブル
 |Column|Type|Option|
 |------|----|------|
 |massage_id|integer|foreign_key: true, null: false|
@@ -55,7 +55,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :users, through: :intermediate
-- has_many :massage
+- has_many :massages
 
 ## intermediateテーブル
 |Column|Type|Option|
@@ -64,5 +64,5 @@ Things you may want to cover:
 |group_id|integer|foreign_key: true, null: false|
 
 ###Association
-- has_many :user
-- has_many :group
+- has_many :users
+- has_many :users_group
