@@ -66,3 +66,9 @@ Things you may want to cover:
 ###Association
 - belongs_to :user
 - belongs_to :group
+
+
+![ggggg](imges-raf/IMG_7946.jpg)
+[ディクトる](imges-raf/)
+
+$ rails g controller Messages
