@@ -1,0 +1,51 @@
+.box
+  .group_box
+    .group_box__header
+      .group_box__header__box
+        .group_box__header__box__name
+          gg
+        .group_box__header__box__iconbox
+          .group_box__header__box__iconbox__edit
+            .group_box__header__box__iconbox__edit__icon
+            = fa_icon "edit"
+          .group_box__header__box__iconbox__setting
+            .group_box__header__box__iconbox__setting__icon
+            = fa_icon "cog"
+    .group_box__groups
+      .group_box__groups__group
+        .group_box__groups__group__name
+          gg
+        .group_box__groups__group__message
+          omaeharatatu
+
+  .chat_box
+    -# ＃ヘッダー
+    .chat_box__header
+      .chat_box__header__groupname
+        .chat_box__header__groupname__left_box
+          qqqqqq
+        .chat_box__header__groupname__member_list
+          Member: gorira
+      .chat_box__header__edit_btn
+        Edit
+    -# ＃メッセージ
+    .chat_box__messages
+      .chat_box__messages__message
+        .chat_box__messages__message__info
+          .chat_box__messages__message__info__name
+            gx
+          .chat_box__messages__message__info__time
+            2019/7/8(mon) 11:45:14
+        .chat_box__messages__message_text
+          ffffffff
+    -# #フォーム
+    .chat_box__form
+      .chat_box__form__new_message
+        .chat_box__form__new_message__input_box
+          .chat_box__form__new_message__input_box__text
+            -# gggggggggg
+          %label.chat_box__form__new_message__input_image
+            = fa_icon "image", class: 'chat_box__form__new_message__input_image__icon'
+            %input.chat_box__form__new_message__input_image__file{type: "file"}
+        .chat_box__form__new_message__submit
+          Send
