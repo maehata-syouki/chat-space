@@ -7,10 +7,11 @@
         .group_box__header__box__iconbox
           .group_box__header__box__iconbox__edit
             .group_box__header__box__iconbox__edit__icon
-            = fa_icon "edit"
+              = fa_icon "edit"
           .group_box__header__box__iconbox__setting
             .group_box__header__box__iconbox__setting__icon
-            = fa_icon "cog"
+              = link_to edit_user_path(current_user) do
+                = fa_icon "cog"
     .group_box__groups
       .group_box__groups__group
         .group_box__groups__group__name
