@@ -68,6 +68,7 @@ body{
       &__name{
         font-size: 15px;
         margin-bottom: 5px;
+        color: white;
       }
       &__message{
         font-size: 11px;
@@ -152,6 +153,7 @@ body{
       &__input_box{
         position: relative;
         width: 100%;
+        display: flex;
           &__text{
             height: 50px;
             width: 100%;

@@ -19,6 +19,6 @@
           .group__name
             = group.name
           .group__message
-            メッセージはまだありません。
-      .group_box__groups__group__name
-        .group_box__groups__group__message
+            = group.show_last_message
+      -# .group_box__groups__group__name
+      -#   .group_box__groups__group__message

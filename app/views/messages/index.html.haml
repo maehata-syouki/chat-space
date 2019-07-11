@@ -34,6 +34,7 @@
     -# ＃メッセージ
     .chat_box__messages
       .chat_box__messages__message
+        = render @messages
         .chat_box__messages__message__info
           .chat_box__messages__message__info__name
             gx
@@ -43,12 +44,13 @@
           ffffffff
     -# #フォーム
     .chat_box__form
-      .chat_box__form__new_message
-        .chat_box__form__new_message__input_box
-          .chat_box__form__new_message__input_box__text
-            -# gggggggggg
-          %label.chat_box__form__new_message__input_image
-            = fa_icon "image", class: 'chat_box__form__new_message__input_image__icon'
-            %input.chat_box__form__new_message__input_image__file{type: "file"}
-        .chat_box__form__new_message__submit
-          Send
+      = form_for [@group, @message] do |f|
+        .chat_box__form__new_message
+          .chat_box__form__new_message__input_box
+            = f.text_field :content, class: 'chat_box__form__new_message__input_box__text', placeholder: 'type a message'
+            = f.label :image, class: 'chat_box__form__new_message__input_image' do
+              = fa_icon 'picture-o', class: 'chat_box__form__new_message__input_image__icon'
+              -# = fa_icon "image", class: 'chat_box__form__new_message__input_image__icon'
+              = f.file_field :image, class: 'chat_box__form__new_message__input_image__file'
+              -# %input.chat_box__form__new_message__input_image__file{type: "file"}
+          = f.submit 'Send', class: 'chat_box__form__new_message__submit'
