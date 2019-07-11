@@ -1,5 +1,6 @@
 *{
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 body{
@@ -8,10 +9,8 @@ body{
   min-width: 100vw;
 }
 
-
 .group_box{
   width: 300px;
-  color: white;
   float: left;
 
   &__header {
@@ -25,6 +24,7 @@ body{
       justify-content: space-between;
       width: 100%;
       font-weight: bold;
+      color: white;
       &__name{
         display: flex;
         justify-content: space-between;
@@ -130,10 +130,10 @@ body{
           font-weight: bold;
         }
         &__time{
-          color: #999999;
-          font-size: 12px;
-          margin-left: 10px;
-        }
+        color: #999999;
+        font-size: 12px;
+        margin-left: 10px;
+      }
       }
       &__text{
         color: #434a54;
