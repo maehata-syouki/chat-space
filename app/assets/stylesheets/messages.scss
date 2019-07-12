@@ -1,24 +1,27 @@
 *{
   box-sizing: border-box;
   text-decoration: none;
+  color: #FF5192;
 }
 
 body{
   overflow: hidden;
   min-height: 100vh;
-  min-width: 100vw;
+  min-width: 100vw;;
 }
+
 
 .group_box{
   width: 300px;
   float: left;
-
+  color: white;
   &__header {
     background-color: #253141;
     height: 100px;
     display: flex;
     align-items: center;
     padding: 0 20px;
+    color: white;
     &__box{
       display: flex;
       justify-content: space-between;
@@ -68,7 +71,6 @@ body{
       &__name{
         font-size: 15px;
         margin-bottom: 5px;
-        color: white;
       }
       &__message{
         font-size: 11px;
