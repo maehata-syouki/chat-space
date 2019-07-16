@@ -26,11 +26,13 @@
     .chat_box__header
       .chat_box__header__groupname
         .chat_box__header__groupname__left_box
-          qqqqqq
+          = @group.name
         .chat_box__header__groupname__member_list
-          Member: gorira
+          Member  :
+          - @group.users.each do |user|
+            = user.name
       .chat_box__header__edit_btn
-        Edit
+        = link_to "Edit", edit_group_path(@group), method: :get, class: 'edit-btn'
     -# ＃メッセージ
     .chat_box__messages
       .chat_box__messages__message
