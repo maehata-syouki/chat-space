@@ -1,11 +1,3 @@
--# .message{"data-message-id": "#{message.id}"}
--# .message{"data-message-id": "#{message.id}"}
--#     .upper-message__user-name
--#       = message.user.name
--#     .upper-message__date
--#       = message.created_at.to_s(:default)
--#   .lower-message
-
 .message{ "data-message-id": "#{message.id}" }
   .upper-message
     .upper-message__user-name
@@ -17,14 +9,3 @@
       - if message.content.present?
         = message.content
     = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
-
-
--# -# .message{"data-message-id": "#{message.id}"}
--# .message{"data-message-id": "#{message.id}"}
--#   .upper-message
--#     .upper-message__user-name
--#       = message.user.name
--#     .upper-message__date
--#       = message.created_at.to_s(:default)
--#   .lower-message
--#     - if message.content.present?
