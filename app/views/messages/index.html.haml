@@ -25,7 +25,7 @@
     -# ＃ヘッダー
     .chat_box__header
       .chat_box__header__groupname
-        .chat_box__header__groupname__left_box
+        .chat_box__header__groupname__left_box{"data-id": "#{@group.id}"}
           = @group.name
         .chat_box__header__groupname__member_list
           Member  :
@@ -37,10 +37,10 @@
     .chat_box__messages
       .chat_box__messages__message
         = render @messages
-        .chat_box__messages__message__info
-          .chat_box__messages__message__info__name
-          .chat_box__messages__message__info__time
-        .chat_box__messages__message_text
+        -# .chat_box__messages__message__info
+        -#   .chat_box__messages__message__info__name
+        -#   .chat_box__messages__message__info__time
+        -# .chat_box__messages__message_text
     -# #フォーム
     .chat_box__form
       = form_for [@group, @message] do |f|
