@@ -50,7 +50,6 @@ $(document).on('turbolinks:load', function(){
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
       $('.chat_box__messages').animate({scrollTop: $('.chat_box__messages')[0].scrollHeight}, 'fast');
       var last_message_id = $('.message:last').data('message-id')
-      console.log(last_message_id)
       var group_id = $('.chat_box__header__groupname__left_box').data('id');
       var href = "/groups/" + group_id + "/api/messages";
       $.ajax({
