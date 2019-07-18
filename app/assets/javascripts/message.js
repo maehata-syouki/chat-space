@@ -1,8 +1,8 @@
 $(document).on('turbolinks:load', function(){
   function buildHTML(message){
-    // var content = message.content ? `${ message.content }` : "";
-    var image = (message.image)? `<image class="lower-message__image" src="${message.image}">`:"";
-    console.log(image)
+    // // var content = message.content ? `${ message.content }` : "";
+    // var image = (message.image)? `<image class="lower-message__image" src="${message.image}">`:"";
+    // console.log(image)
     var html = `<div class="message" data-message-id="${message.id}>
                   <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -52,15 +52,10 @@ $(document).on('turbolinks:load', function(){
   var reloadMessages = setInterval(function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
       $('.chat_box__messages').animate({scrollTop: $('.chat_box__messages')[0].scrollHeight}, 'fast');
-
       var last_message_id = $('.message:last').data('message-id')
       console.log(last_message_id)
-
       var group_id = $('.chat_box__header__groupname__left_box').data('id');
-      // console.log(group_id);
-      // console.log(last_message_id);
       var href = "/groups/" + group_id + "/api/messages";
-      // console.log(href)
       $.ajax({
         url: href,
         type: "GET",
@@ -73,11 +68,10 @@ $(document).on('turbolinks:load', function(){
           var insertHTML = buildHTML(message)
           $('.chat_box__messages').append(insertHTML)
           $('.chat_box__messages').animate({scrollTop: $('.chat_box__messages')[0].scrollHeight}, 'fast');
-          // alert("成功")
         })
       })
       .fail(function(data) {
-        console.log('自動更新に失敗しました');
+        alert('自動更新に失敗しました');
       });
     } else {
         clearInterval(reloadMessages);

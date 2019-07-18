@@ -5,10 +5,6 @@
 -#     .upper-message__date
 -#       = message.created_at.to_s(:default)
 -#   .lower-message
--#     - if message.content.present?
--#       %p.lower-message__content
--#         = message.content
--#     = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
 
 .message{ "data-message-id": "#{message.id}" }
   .upper-message
@@ -32,6 +28,3 @@
 -#       = message.created_at.to_s(:default)
 -#   .lower-message
 -#     - if message.content.present?
--#       %p.lower-message__content
--#         = message.content
--#     = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
