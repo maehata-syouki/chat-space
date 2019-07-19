@@ -62,3 +62,4 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 gem "jquery-rails"
+gem 'unicorn', '5.4.1'
