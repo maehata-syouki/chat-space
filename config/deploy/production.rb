@@ -62,7 +62,7 @@
 
 server '3.113.190.55',
   user: 'ec2-user',
-  roles: %w{app db web}
+  roles: %w{app db web},
   ssh_options: {
     port:  22,
     user: 'ec2-user',
