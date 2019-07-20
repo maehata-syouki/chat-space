@@ -63,9 +63,9 @@
 server '3.113.190.55',
   user: 'ec2-user',
   roles: %w{app db web}
-  # ssh_options: {
-  #   port:  22,
-  #   user: 'ec2-user',
-  #   keys: %w(~/.ssh/csgo.pem),
-  #   forward_agent: true,
-  # }
+  ssh_options: {
+    port:  22,
+    user: 'ec2-user',
+    keys: %w(~/.ssh/csgo.pem),
+    forward_agent: true,
+  }
