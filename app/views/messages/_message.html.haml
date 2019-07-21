@@ -1,11 +1,11 @@
-.message{ "data-message-id": "#{message.id}" }
-  .upper-message
-    .upper-message__user-name
+.message-group{ "data-message-id": "#{message.id}" }
+  .message-list-create
+    .message-list__name
       = message.user.name
-    .upper-message__date
+    .message-list__post-date
       = message.created_at.strftime("%Y-%m-%d %H:%M:%S")
-  .lower-message
+  .message-list__content
     - if message.content.present?
-      - if message.content.present?
+      %p.lower-message__content
         = message.content
     = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
