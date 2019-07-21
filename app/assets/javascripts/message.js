@@ -16,10 +16,11 @@ $(document).on('turbolinks:load', function(){
                     </p>
                   </div>
                   ${image}
-                </div>`;
+                </div>`
     return html;
   }
 
+  // 非同期通信
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -48,7 +49,7 @@ $(document).on('turbolinks:load', function(){
     })
   });
 
-  // 自動更新
+  // 自動更新の実装
   var reloadMessages = setInterval(function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
       $('.messages-screen').animate({scrollTop: $('.messages-screen')[0].scrollHeight}, 'fast');
