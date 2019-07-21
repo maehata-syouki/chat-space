@@ -12,6 +12,6 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-  config.fog_directory  = 'upload-chat-space.test'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/upload-chat-space.test'
+  config.fog_directory  = 'chat-maehata'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/chat-maehata'
 end
