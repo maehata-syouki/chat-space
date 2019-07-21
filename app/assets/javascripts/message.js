@@ -1,57 +1,60 @@
 $(document).on('turbolinks:load', function(){
   function buildHTML(message){
     var image = (message.image.url)? `<image class="lower-message__image" src="${message.image.url}">`:"";
-    var html = `<div class="message" data-message-id="${message.id}>
-                  <div class="upper-message">
-                    <div class="upper-message__user-name">
+    var html = `<div class="message-group" data-message-id=${message.id}>
+                  <div class="message-list-create">
+                    <div class="message-list__name">
                       ${message.user_name}
                     </div>
-                    <div class="upper-message__date">
+                    <div class="message-list__post-date">
                       ${message.date}
                     </div>
                   </div>
-                  <div class="lower-message">
+                  <div class="message-list__content">
                     <p class="lower-message__content">
                       ${message.content}
                     </p>
-                    ${image}
                   </div>
-                </div>`
-  return html;
+                  ${image}
+                </div>`;
+    return html;
   }
 
+  // メッセージ送信の非同期化部分
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    var message = new FormData(this);
-    var url = (window.location.href);
+    var formData = new FormData(this);
+    var url = $(this).attr('action');
+
     $.ajax({
-      url: url,
-      type: 'POST',
-      data: message,
-      dataType: 'json',
-      processData: false,
-      contentType: false
+      url:          url,
+      type:         "POST",
+      data:         formData,
+      dataType:     'json',
+      processData:  false,
+      contentType:  false
     })
+
     .done(function(data){
       var html = buildHTML(data);
-      $('.chat_box__messages__message').append(html);
+      $(".messages-screen").append(html);
+      $(".form-group").val('');
       $('#new_message')[0].reset();
-      $('.chat_box__messages__message').animate({scrollTop: $('.chat_box__messages__message')[0].scrollHeight}, 'fast');
+      $(".send-btn").prop('disabled', false);
+      $('.messages-screen').animate({scrollTop: $('.messages-screen')[0].scrollHeight}, 'fast');
     })
-    .fail(function(data){
-      alert('エラーが発生したためメッセージ送信できませんでした。');
+    .fail(function(){
+      alert('エラーが発生したためメッセージは送信できませんでした。');
+      $(".send-btn").prop('disabled', false);
     })
-    .always(function(data){
-      $('.chat_box__form__new_message__submit').prop('disabled', false);
-    })
-  })
+  });
 
-
+  // 自動更新
   var reloadMessages = setInterval(function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
-      $('.chat_box__messages').animate({scrollTop: $('.chat_box__messages')[0].scrollHeight}, 'fast');
-      var last_message_id = $('.message:last').data('message-id')
-      var group_id = $('.chat_box__header__groupname__left_box').data('id');
+      $('.messages-screen').animate({scrollTop: $('.messages-screen')[0].scrollHeight}, 'fast');
+      var last_message_id = $('.message-group:last').data('message-id')
+      var group_id = $('.group-name').data('id');
       var href = "/groups/" + group_id + "/api/messages";
       $.ajax({
         url: href,
@@ -63,8 +66,8 @@ $(document).on('turbolinks:load', function(){
         var insertHTML = "" ;
         data.forEach(function(message) {
           var insertHTML = buildHTML(message)
-          $('.chat_box__messages').append(insertHTML)
-          $('.chat_box__messages').animate({scrollTop: $('.chat_box__messages')[0].scrollHeight}, 'fast');
+          $('.messages-screen').append(insertHTML)
+          $('.messages-screen').animate({scrollTop: $('.messages-screen')[0].scrollHeight}, 'fast');
         })
       })
       .fail(function(data) {
@@ -75,4 +78,3 @@ $(document).on('turbolinks:load', function(){
       }
   } , 5000 );
 });
-// });

@@ -1,51 +1,23 @@
 .box
   = render 'shared/side_bar'
-  -# .group_box
-  -#   .group_box__header
-  -#     .group_box__header__box
-  -#       .group_box__header__box__name
-  -#         gg
-  -#       .group_box__header__box__iconbox
-  -#         .group_box__header__box__iconbox__edit
-  -#           .group_box__header__box__iconbox__edit__icon
-  -#             = link_to new_group_path do
-  -#               = fa_icon "edit"
-  -#         .group_box__header__box__iconbox__setting
-  -#           .group_box__header__box__iconbox__setting__icon
-  -#             = link_to edit_user_path(current_user) do
-  -#               = fa_icon "cog"
-  -#   .group_box__groups
-  -#     .group_box__groups__group
-  -#       .group_box__groups__group__name
-  -#         gg
-  -#       .group_box__groups__group__message
-  -#         omaeharatatu
-
-  .chat_box
-    -# ＃ヘッダー
-    .chat_box__header
-      .chat_box__header__groupname
-        .chat_box__header__groupname__left_box{"data-id": "#{@group.id}"}
+  .main-contents
+    .header-screen
+      .header-group
+        .group-name{ "data-id": "#{@group.id}" }
           = @group.name
-        .chat_box__header__groupname__member_list
-          Member  :
+        .login-name
+          Member:
           - @group.users.each do |user|
             = user.name
-      .chat_box__header__edit_btn
-        = link_to "Edit", edit_group_path(@group), method: :get, class: 'edit-btn'
-    -# ＃メッセージ
-    .chat_box__messages
-      .chat_box__messages__message
-        = render @messages
-    -# #フォーム
-    .chat_box__form
+      = link_to "Edit", edit_group_path(params[:group_id]), method: :get, class: "edit-btn"
+
+    .messages-screen
+      = render @messages
+    .footer-screen
       = form_for [@group, @message] do |f|
-        .chat_box__form__new_message
-          .chat_box__form__new_message__input_box
-            = f.text_field :content, class: 'chat_box__form__new_message__input_box__text', placeholder: 'type a message'
-            = f.label :image, class: 'chat_box__form__new_message__input_image' do
-              = fa_icon 'picture-o', class: 'chat_box__form__new_message__input_image__icon'
-              -# = fa_icon "image", class: 'chat_box__form__new_message__input_image__icon'
-              = f.file_field :image, class: 'chat_box__form__new_message__input_image__file'
-              -# %input.chat_box__form__new_message__input_image__file{type: "file"}
-          = f.submit 'Send', class: 'chat_box__form__new_message__submit'
+        = f.text_field :content, class: 'form-group', placeholder: 'type a message'
+        .formt
+          = f.label :image, class: 'image-icon' do
+            = fa_icon 'picture-o', class: 'image-input'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'send-btn'
